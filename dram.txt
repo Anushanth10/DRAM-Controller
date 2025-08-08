@@ -21,15 +21,14 @@ parameter IDLE =3'b001;
 parameter READ =3'b010;
 parameter WRITE =3'b011;
 parameter REFRESH =3'b100;
-parameter HAMMING=3'b110;
 
 reg  [4:0] refresh_cnt; 
 reg  [5:0] syndrome;
 reg [38:0] hamming;     
 reg [38:0] corrected_word; 
-reg [38:0] word;      // counts cycles within period
+reg [38:0] word;      
 reg  [4:0] period_max_reg; 
-reg parity_check;        // 9  (=>10?cycles) or 19 (=>20)
+reg parity_check; 
 reg        refresh_mode;           // 1 = adaptive, 0 = scheduled
 wire       do_refresh =(refresh_cnt == period_max_reg);
 
